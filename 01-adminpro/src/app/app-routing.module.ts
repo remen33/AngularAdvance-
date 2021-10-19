@@ -1,3 +1,4 @@
+import { PagesComponent } from './pages/pages.component';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
@@ -8,12 +9,20 @@ import { NopagefoundComponent } from './pages/nopagefound/nopagefound.component'
 import { ProgressComponent } from './pages/progress/progress.component';
 
 export const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
+  {
+    path: '',
+    component: PagesComponent,
+    children: [
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'graphic1', component: Graphic1Component },
+      { path: 'progress', component: ProgressComponent },
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    ],
+  },
+
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'graphic1', component: Graphic1Component },
-  { path: 'progress', component: ProgressComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+
   { path: '**', component: NopagefoundComponent },
 ];
 
