@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -25,7 +26,7 @@ import { Graphic1Component } from './pages/graphic1/graphic1.component';
     ProgressComponent,
     Graphic1Component,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
